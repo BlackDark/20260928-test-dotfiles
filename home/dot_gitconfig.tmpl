@@ -3,8 +3,13 @@
 #####################################################################
 
 [user]
-    name = Robert Dailey
-    email = git@rdailey.me
+    name = Eduard Marbach
+    email = mail@eduard-marbach.de
+    signingkey = ~/.ssh/id_ed25519.pub
+[gpg]
+    format = ssh
+[commit]
+    gpgsign = true
 [init]
     defaultBranch = main
 [core]
@@ -63,6 +68,7 @@
     fetchJobs = 8
 [tag]
     sort = v:refname
+    gpgsign = true
     #forceSignAnnotated = true
 [checkout]
     defaultRemote = origin
