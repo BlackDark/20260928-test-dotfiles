@@ -1,6 +1,6 @@
 {{- $models := index .opencodeModels .opencodeProvider -}}
 {{- $compaction := $models.compaction -}}
-{{- if eq .env "personal" }}{{ $compaction = .opencodePersonalCompaction }}{{ end -}}
+{{- if and (eq .env "personal") (ne .opencodeProvider "opencode") }}{{ $compaction = .opencodePersonalCompaction }}{{ end -}}
 {
   "$schema": "https://opencode.ai/config.json",
   "update": "disable",
@@ -11,7 +11,9 @@
     "policies": [
       // Hide these providers even when their credentials are detected
       { "action": "provider.use", "resource": "github-copilot", "effect": "deny" },
+{{- if ne .opencodeProvider "opencode" }}
       { "action": "provider.use", "resource": "opencode", "effect": "deny" },
+{{- end }}
     ],
   },
   "agents": {

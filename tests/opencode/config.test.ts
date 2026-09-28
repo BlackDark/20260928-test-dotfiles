@@ -8,7 +8,7 @@ import { createHost } from "./real-host.ts";
 const template = join(import.meta.dir, "../../home/dot_config/opencode/opencode.jsonc.tmpl");
 const agentSource = join(import.meta.dir, "../../home/dot_config/opencode/exact_agents");
 
-const providers = ["anthropic", "openai"] as const;
+const providers = ["anthropic", "openai", "opencode"] as const;
 type ProviderID = (typeof providers)[number];
 
 function renderTemplate(file: string, opencodeProvider: ProviderID) {
@@ -121,6 +121,11 @@ test("renders provider blocks and authentication only for the selected provider"
   expect(openai.agents.build.model).toStartWith("openai/");
   expect(openai.plugins).not.toContain("@ex-machina/opencode-anthropic-auth@next");
   expect(openai.providers).toEqual({});
+
+  const opencode = render("opencode");
+  expect(opencode.agents.build.model).toStartWith("opencode/");
+  expect(opencode.providers).toEqual({});
+  expect(opencode.experimental.policies.map((p: any) => p.resource)).not.toContain("opencode");
 });
 
 test("the V2 host evaluates representative global permissions", async () => {

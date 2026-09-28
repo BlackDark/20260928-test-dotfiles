@@ -8,7 +8,7 @@
 {{- end -}}
 
 {{- $opencode_provider := promptChoiceOnce . "opencodeProvider" "OpenCode model provider"
-    (list "anthropic" "openai") "anthropic" -}}
+    (list "anthropic" "openai" "opencode") "anthropic" -}}
 
 {{- $terminal_font_size := promptIntOnce . "terminal.fontSize"
     "Terminal font size (points)" 10 -}}

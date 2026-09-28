@@ -59,3 +59,32 @@ opencodeModels:
     upgradeAnalyst:
       model: openai/gpt-6-sol
       variant: low
+
+  # OpenCode Zen; one free model, agents differ only by effort
+  opencode:
+    plan:
+      model: opencode/space-bunny-free
+      variant: high
+    build:
+      model: opencode/space-bunny-free
+      variant: medium
+    title:
+      model: opencode/space-bunny-free
+    compaction:
+      model: opencode/space-bunny-free
+      variant: low
+    explore:
+      model: opencode/space-bunny-free
+      variant: low
+    acceptance:
+      model: opencode/space-bunny-free
+      variant: high
+    researcher:
+      model: opencode/space-bunny-free
+      variant: medium
+    reviewer:
+      model: opencode/space-bunny-free
+      variant: medium
+    upgradeAnalyst:
+      model: opencode/space-bunny-free
+      variant: low
